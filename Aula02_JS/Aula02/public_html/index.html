@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Aula 02</title>
+        
+    </head>
+    <body>
+        Aula 02 - JS 
+        <script>   
+            //Exercicio 01
+            let nome = prompt ("Digite o seu nome: ");
+            alert ("Seja bem vindo " + nome );
+            
+            //Exercicio 03
+            let maior = confirm ("Você e maior de idade: ");
+            
+            if (maior === true)
+            {
+                window.location = ('http://www.uol.com.br');
+            }else
+                { 
+                    alert("Conteudo proibido para menores de 18 anos");
+                }
+            
+            alert (" Exercicio 02 ");
+            window.onload = function() 
+            {
+                alert ("Pagina Carregada!");
+            };
+            
+            alert (" Exercicio 04 ");
+            pagina = window.location.href;
+            console.log ("A pagian atual e: " +pagina);
+        </script>
+        
+        
+        <script src="script.js"> </script>
+        
+        
+        
+</body>
+</html>

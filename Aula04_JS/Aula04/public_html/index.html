@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Aula 04</title>
+    
+    </head>
+    <body>
+        <input type="button" value="Cumprimentar" id="cumprimentar"> </input>
+        <br>
+        <br>
+        <input type="button" value="Alterar Cor Fundo" id="alterarcor"> </input>
+        <br>
+        <br>
+        <img src="luar.jpg" alt="luar" height="150" width="200" id="luar">
+        <br>
+        <p id="pmensagem"> </p>
+        <br>
+        
+        <form id="google" action="http://www.google.com.br" method="post">
+            <input id="idade" type="text" name="idade">Idade</input>
+            <button type="button" value="Google"></input>
+        </form>
+        <br>
+        
+        <p id="erros"></p>
+        
+        <style>
+            p { color: yellow;
+                font-size: 30px;
+              }
+        </style>
+        
+        
+       <script>
+                cumprimentar.onclick = function(){
+                    alert("Olá");
+                };
+            
+                alterarcor.onclick = function(){
+                    document.body.style.background = 'green';
+                };
+                
+                function verimagen()
+                {
+                    pmensagem.textContent = "Estou vendo a imagem";
+                }
+                
+                luar.addEventListener(onmouseover, verimagen());
+                                             
+                luar.onclick = function() {
+                    pmensagem.textContent = "Estou clicando na imagen";
+                };
+                
+                luar.removeEventListener(onmouseover, verimagen());
+                
+                document.body.onclick = function() {
+                    this.style.background = 'red';
+                };
+                
+               luar.removeEventListener(onmouseover, verimagem());
+               
+               let idade = document.querySelector('#idade');
+               
+              document.querySelector('#google').onsubmit = function(event);
+
+               console.log(google.value);
+
+            {
+            event.preventDefault()
+                if(idade > 17)
+                {
+                    form.submit()
+                }
+                else{
+                    alert('Não Autorizado')
+                }
+                }
+
+     
+              
+        </script>
+        
+    </body>
+</html>

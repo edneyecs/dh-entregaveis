@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Aula 06</title>
+    </head>
+    <body>
+        <form>
+            <select name="paises" id="selectPaises"></select>
+        </form>
+        <script>    
+            //Exercicio 01
+            let objetoEmFormatoJSON1 = '{"Atributo1": "Valor1"}';
+            let objetoJSON1 = JSON.stringify(objetoEmFormatoJSON1);
+            console.log (objetoJSON1);
+            let exercicio1 = JSON.parse(objetoJSON1);
+            console.log (exercicio1);
+            
+            //Exercicio 02
+            let amigoJson = '{"Quantidade" : 02, "Nome1" : "Joao", "Nome2" : "Jose" }';
+            let objetoamigo = JSON.stringify(amigoJson);
+            console.log(objetoamigo);
+            let exercicio2 = JSON.parse(objetoamigo);
+            console.log (exercicio2);
+            
+            
+            
+            //Ajax
+            //Exercicio 01
+            var paises = "";
+            let xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function()
+            {
+                if (xmlhttp.readyState === 4 && xmlhttp.status === 200 )
+                {
+                    let resposta = JSON.parse(xmlhttp.responseText);
+                    console.log(resposta);
+                    let respostaEmArray = Object.entries(resposta.contenido);
+                    console.log(respostaEmArray);
+                    
+                    respostaEmArray.forEach(function (item)
+                    {
+                        let pais = item[0];
+                        let id = item[1];
+                        paises += '<option value='+id+'>'+pais+ '</option>';
+                        //paises += '<option value='+item[1]+'>'+item[0]+ '</option>';
+                       
+                        let inserir = document.getElementById("selectPaises");
+                        inserir.innerHTML = paises;
+                    });
+                     
+                    
+                }
+            }
+            xmlhttp.open("GET", "http://pilote.techo.org/?do=api.getPaises", true);
+            xmlhttp.send();
+            
+            
+            
+            
+            
+        </script>
+    </body>
+</html>

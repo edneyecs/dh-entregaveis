@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Aula 05</title>
+   
+    </head>
+    <body>
+        <form>  
+            <label name="nome">Nome:
+               <input type="text" name="nome" />
+               <br>
+            </label>
+            <label name="email">E-mail:
+               <input type="text" name="email" />
+               <br>
+            </label>
+            <label>
+               <input type="radio" name="sexo" value="Masculino">Masculino
+            </label>
+            <label>
+               <input type="radio" name="sexo" value="Feminino">Feminino
+            </label> 
+               <br>
+            <label>
+               <input type="checkbox" name="receber" value="sim">Notificacao: 
+            </label>   
+               <br>
+            <label name="senha1">Senha: 
+               <input type="text" name="senha1" />
+            </label>
+               <br>
+            <label name="senha2">Confirmar Senha:
+               <input type="text" name="senha2" />
+            </label>
+               <br>
+               <button type="submit" name="enviar" value="enviar" >Enviar</button>
+               <button type="button" name="apagar" value="apagar">Apagar</button>
+        </form>
+        
+        <p id="mensagem"></p>
+        <br>
+        <ul id="listar">
+        </ul>
+         
+        <script>
+            let form = document.forms[0];
+            
+            form.onsubmit = function(event){
+                event.preventDefault();
+                
+                let msgFinal = "";
+                let lista = "";
+                let nome = form['nome'].value;
+                let email = form['email'].value;
+                let sexo = form['sexo'].value;
+                let senha1 = form['senha1'].value;
+                let senha2 = form['senha2'].value;
+                
+                if (!nome)
+                {
+                    msgFinal += 'Preencha o campo nome <br>';
+                }
+                
+                if (!email)
+                {
+                    msgFinal += 'Preencha o campo e-mail <br>';
+                }
+                                         
+                if (!sexo)
+                {
+                    msgFinal += 'Selecione o sexo <br>';
+                }
+                
+                if (!senha1)
+                {
+                    msgFinal += 'Preencha o campo senha<br>';
+                }
+                
+                if (!senha2)
+                {
+                    msgFinal += 'Preencha o campo confirmar senha<br>';
+                }
+                
+                if ( senha1 !== senha2 )
+                {
+                    msgFinal = msgFinal + 'Senhas nao conferem!<br>';
+                }
+                              
+                mensagem.innerHTML = msgFinal;
+                
+                if (nome && senha1 && sexo =='Feminino' && email && senha1 == senha2)
+                {
+                    lista = '<li>Nome: '+ form['nome'].value + '</li>'+
+                            '<li>E-mail: '+ form['email'].value + '</li>'+
+                            '<li>Sexo: '+ form['sexo'].value + '</li>'+
+                            '<li>Senha: '+ form['senha1'].value + '</li>';
+                    console.log(listar);
+                    document.body.style.backgroundColor = 'pink';
+                }
+                
+                if (nome && senha1 && sexo =='Masculino' && email && senha1 == senha2)
+                {
+                    lista = '<li>Nome: '+ form['nome'].value + '</li>'+
+                            '<li>E-mail: '+ form['email'].value + '</li>'+
+                            '<li>Sexo: '+ form['sexo'].value + '</li>'+
+                            '<li>Senha: '+ form['senha1'].value + '</li>';
+                    
+                    document.body.style.backgroundColor = 'green';
+                }
+                
+                mensagem.innerHTML = msgFinal;
+                listar.innerHTML = lista;
+            };
+            
+                       
+            form["apagar"].onclick = function apagar(){
+                        
+                form['nome'].value = "";    
+                form['email'].value = "";
+                form['sexo'].value = "";
+                form['senha1'].value = "";
+                form['senha2'].value = "";
+                
+                document.body.style.backgroundColor = "white";
+                listar.innerHTML = "";
+            };
+        
+        </script>
+    </body>
+</html>
+
